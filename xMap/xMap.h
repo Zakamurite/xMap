@@ -43,9 +43,9 @@
 
 using namespace std;
 
-//																here russian windows support
-#define CToW(szString, wString)				(MyMultiByteToWideChar(nCharTable, MB_PRECOMPOSED, szString, (int)strlen(szString), wString, (int)strlen(szString)+1))
-#define	WToC(wString, szString)				(MyWideCharToMultiByte(nCharTable, 0, wString, -1, szString, (int)sizeof(szString), 0, 0));
+//                                                                here russian windows support
+#define CToW(szString, wString) (MyMultiByteToWideChar(nCharTable, MB_PRECOMPOSED, szString, (int)strlen(szString), wString, (int)strlen(szString)+1))
+#define WToC(wString, szString) (MyWideCharToMultiByte(nCharTable, 0, wString, -1, szString, (int)sizeof(szString), 0, 0));
 
 #define ArraySize(x) (sizeof(x) / sizeof(x[0]))
 

@@ -2,36 +2,37 @@
 //#include "String2.h"
 #include "D2Structs.h"
 
-/*enum DllBase {
-	DLLBASE_D2CLIENT = 0x6FAB0000,
-	DLLBASE_D2COMMON = 0x6FD50000,
-	DLLBASE_D2GFX = 0x6FA80000,
-	DLLBASE_D2WIN = 0x6F8E0000,
-	DLLBASE_D2LANG = 0x6FC00000,
-	DLLBASE_D2CMP = 0x6FE10000,
-	DLLBASE_D2MULTI = 0x6F9D0000,
-	DLLBASE_BNCLIENT = 0x6FF20000,
-	DLLBASE_D2NET = 0x6FFB0000, // conflict with STORM.DLL
-	DLLBASE_STORM = 0x6FBF0000,
-	DLLBASE_FOG = 0x6FF50000
+/*enum DllBase
+{
+    DLLBASE_D2CLIENT    = 0x6FAB0000,
+    DLLBASE_D2COMMON    = 0x6FD50000,
+    DLLBASE_D2GFX       = 0x6FA80000,
+    DLLBASE_D2WIN       = 0x6F8E0000,
+    DLLBASE_D2LANG      = 0x6FC00000,
+    DLLBASE_D2CMP       = 0x6FE10000,
+    DLLBASE_D2MULTI     = 0x6F9D0000,
+    DLLBASE_BNCLIENT    = 0x6FF20000,
+    DLLBASE_D2NET       = 0x6FFB0000,   // conflict with STORM.DLL
+    DLLBASE_STORM       = 0x6FBF0000,
+    DLLBASE_FOG         = 0x6FF50000
 };*/
 #ifdef _DEFINE_VARS
 
 enum {DLLNO_D2CLIENT, DLLNO_D2COMMON, DLLNO_D2GFX, DLLNO_D2LANG, DLLNO_D2WIN, DLLNO_D2NET, DLLNO_D2GAME, DLLNO_D2LAUNCH, DLLNO_FOG, DLLNO_BNCLIENT, DLLNO_STORM, DLLNO_D2CMP, DLLNO_D2MULTI};
 
-#define DLLOFFSET(a1,b1) ((DLLNO_##a1)|((b1)<<8))
-#define FUNCPTR(d1,v1,t1,t2,o1)	typedef t1 d1##_##v1##_t t2; d1##_##v1##_t *d1##_##v1 = (d1##_##v1##_t *)DLLOFFSET(d1,o1);
-#define VARPTR(d1,v1,t1,o1)		typedef t1 d1##_##v1##_t;    d1##_##v1##_t *p_##d1##_##v1 = (d1##_##v1##_t *)DLLOFFSET(d1,o1);
-#define ASMPTR(d1,v1,o1)			DWORD d1##_##v1 = DLLOFFSET(d1,o1);
+#define DLLOFFSET(a1,b1)            ((DLLNO_##a1)|((b1)<<8))
+#define FUNCPTR(d1,v1,t1,t2,o1)     typedef t1 d1##_##v1##_t t2; d1##_##v1##_t *d1##_##v1 = (d1##_##v1##_t *)DLLOFFSET(d1,o1);
+#define VARPTR(d1,v1,t1,o1)         typedef t1 d1##_##v1##_t;    d1##_##v1##_t *p_##d1##_##v1 = (d1##_##v1##_t *)DLLOFFSET(d1,o1);
+#define ASMPTR(d1,v1,o1)            DWORD d1##_##v1 = DLLOFFSET(d1,o1);
 
 #else
 
-#define FUNCPTR(d1,v1,t1,t2,o1)	typedef t1 d1##_##v1##_t t2; extern d1##_##v1##_t *d1##_##v1;
-#define VARPTR(d1,v1,t1,o1)		typedef t1 d1##_##v1##_t;    extern d1##_##v1##_t *p_##d1##_##v1;
-#define ASMPTR(d1,v1,o1)			extern DWORD d1##_##v1;
+#define FUNCPTR(d1,v1,t1,t2,o1)     typedef t1 d1##_##v1##_t t2;    extern d1##_##v1##_t *d1##_##v1;
+#define VARPTR(d1,v1,t1,o1)         typedef t1 d1##_##v1##_t;       extern d1##_##v1##_t *p_##d1##_##v1;
+#define ASMPTR(d1,v1,o1)            extern DWORD d1##_##v1;
 
 #endif
-#define _D2PTRS_START	D2CLIENT_RevealAutomapRoom
+#define _D2PTRS_START   D2CLIENT_RevealAutomapRoom
 
 FUNCPTR(D2CLIENT, RevealAutomapRoom, void __stdcall, (Room1 *pRoom1, DWORD dwClipFlag, AutomapLayer *aLayer), 0x404C0)
 
@@ -54,7 +55,7 @@ VARPTR(D2CLIENT, Ping, DWORD, 0x1032BC) // Updated 6FBB32BC id d2
 FUNCPTR(D2MULTI, SayInChannel, bool __stdcall, (char *szMessage), 0xFE50)
 
 FUNCPTR(D2CLIENT, clickMap, VOID __stdcall, (DWORD MouseFlag, DWORD x, DWORD y, DWORD Type), 0x5CE80) // Updated 
-																									//6FB0CE80
+                                                                                                    //6FB0CE80
 FUNCPTR(D2NET, SendPacket, void __stdcall, (size_t aLen, DWORD arg1, BYTE* aPacket), -10036) 
 FUNCPTR(D2NET, ReceivePacket, void __stdcall, (BYTE *aPacket, DWORD aLen), 0x6510) // Updated
 FUNCPTR(D2NET, ReceivePacket_I, void __stdcall, (BYTE *aPacket, DWORD aLen), -10002) // Updated 
@@ -174,19 +175,19 @@ FUNCPTR(D2COMMON, GetSuperuniqueTxt, SuperuniqueTxt * __stdcall, (DWORD monno), 
 
 //
 FUNCPTR(D2LANG, GetLocaleText, wchar_t* __fastcall, (WORD nLocaleTxtNo), -10005)
-#define _D2PTRS_END	D2LANG_GetLocaleText
+#define _D2PTRS_END    D2LANG_GetLocaleText
 
 #undef FUNCPTR
 #undef VARPTR
 #undef ASMPTR
 
-#define D2CLIENT_GetInventoryId		D2CLIENT_GetInventoryId_STUB
-#define D2CLIENT_GetUiVar(dwVarNo)		(D2CLIENT_GetUIVar_STUB(dwVarNo))
-#define D2CLIENT_GetUnitName(x)				(wchar_t*)D2CLIENT_GetUnitName_STUB((DWORD)x)
-#define D2CLIENT_InitAutomapLayer(layerlvl)	((AutomapLayer*)D2CLIENT_InitAutomapLayer_STUB(layerlvl))
-#define D2CLIENT_clickParty(x,y)			(D2CLIENT_clickParty_ASM((DWORD)x, (DWORD)y))
-#define D2CLIENT_DrawRectBox(x)				(D2DrawRectFrame_STUB((DWORD)x))
-#define TestPvpFlag(dwId1, dwId2, dwFlag)	(TestPvpFlag_STUB(dwId1, dwId2, dwFlag))
-#define D2CLIENT_GetUnitFromId(unitid, unittype)		((UnitAny *)D2CLIENT_GetUnitFromId_STUB(unitid, unittype))
-#define GetPlayerStat(nStat, nExtra)				(D2COMMON_GetUnitStat(*p_D2CLIENT_PlayerUnit, nStat, nExtra))
-#define GetUnitStat(unit, stat)				(D2COMMON_GetUnitStat(unit, stat, 0))
+#define D2CLIENT_GetInventoryId        D2CLIENT_GetInventoryId_STUB
+#define D2CLIENT_GetUiVar(dwVarNo)        (D2CLIENT_GetUIVar_STUB(dwVarNo))
+#define D2CLIENT_GetUnitName(x)                (wchar_t*)D2CLIENT_GetUnitName_STUB((DWORD)x)
+#define D2CLIENT_InitAutomapLayer(layerlvl)    ((AutomapLayer*)D2CLIENT_InitAutomapLayer_STUB(layerlvl))
+#define D2CLIENT_clickParty(x,y)            (D2CLIENT_clickParty_ASM((DWORD)x, (DWORD)y))
+#define D2CLIENT_DrawRectBox(x)                (D2DrawRectFrame_STUB((DWORD)x))
+#define TestPvpFlag(dwId1, dwId2, dwFlag)    (TestPvpFlag_STUB(dwId1, dwId2, dwFlag))
+#define D2CLIENT_GetUnitFromId(unitid, unittype)        ((UnitAny *)D2CLIENT_GetUnitFromId_STUB(unitid, unittype))
+#define GetPlayerStat(nStat, nExtra)                (D2COMMON_GetUnitStat(*p_D2CLIENT_PlayerUnit, nStat, nExtra))
+#define GetUnitStat(unit, stat)                (D2COMMON_GetUnitStat(unit, stat, 0))

@@ -1,9 +1,9 @@
 #ifdef _VARS
-#define DEFINEVAR(type, name)		type name;
-#define CARRAY(type, name)		CArrayEx<type, type> name;
+#define DEFINEVAR(type, name)   type name;
+#define CARRAY(type, name)      CArrayEx<type, type> name;
 #else
-#define DEFINEVAR(type, name)		extern type name;
-#define CARRAY(type, name)		extern CArrayEx<type, type> name;
+#define DEFINEVAR(type, name)   extern type name;
+#define CARRAY(type, name)      extern CArrayEx<type, type> name;
 #endif
 
 #include "MapFunc.h"
@@ -126,7 +126,7 @@ DEFINEVAR(BOOL, bDisableBossDeathAnims)
 DEFINEVAR(BOOL, bInfravision)
 DEFINEVAR(BOOL, bChangeItemColors)
 DEFINEVAR(BOOL, cHideItems)
-DEFINEVAR(INT,	nHideItemsKey)
+DEFINEVAR(INT,    nHideItemsKey)
 DEFINEVAR(BOOL, bDrawAutomapItems)
 DEFINEVAR(BYTE, cMonsterDeathAnims[1000])
 DEFINEVAR(BOOL, bDisableMonsterDeathAnims)

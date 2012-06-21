@@ -11,7 +11,7 @@ using namespace std;
 VOID MyMultiByteToWideChar(UINT CodePage, DWORD dwFlags, LPCSTR lpMultiByteStr, INT cbMultiByte, LPWSTR lpWideCharStr, int cchWideChar);
 VOID MyWideCharToMultiByte(UINT CodePage, DWORD dwFlags, LPCWSTR lpWideCharStr, int cchWideChar, LPSTR lpMultiByteStr, int cmMultiByte, LPCSTR lpDefaultChar, LPBOOL lpUsedDefaultChar);
 
-INT StringTokenize(CHAR * input, CHAR separator, CHAR ** tokenbuf, INT maxtokens);
+INT StringTokenize(CHAR* input, CHAR separator, CHAR** tokenbuf, INT maxtokens);
 int GetPvPStatus(DWORD nUnitId);
 bool GetPlayerRoster(RosterUnit* pUnit, DWORD nUnitId);
 

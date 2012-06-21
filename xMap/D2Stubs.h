@@ -27,9 +27,9 @@ void __stdcall ShakeScreenPatch(DWORD *xpos, DWORD *ypos);
 void ScrollMap(char xinc, char yinc);
 struct Toggles
 {
-	int nKey;
-	LPVOID nVar;
-	char* pMsg;
+    int nKey;
+    LPVOID nVar;
+    char* pMsg;
 };
 void PermShowOrbPatch_ASM();
 void PermShowOrbPatch2_ASM();

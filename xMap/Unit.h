@@ -10,5 +10,5 @@ void RunToEntity(DWORD unitType, DWORD id);
 UnitAny* FindNearestPortal(string owner);
 BOOL HostilePlayer(DWORD dwUnitId);
 UnitAny* D2CLIENT_FindUnit(DWORD dwId, DWORD dwType);
-PresetUnit* FindPresetUnit(DWORD dwClassId, DWORD dwType, Room2* *pRoom);
+PresetUnit* FindPresetUnit(DWORD dwClassId, DWORD dwType, Room2** pRoom);
 #endif
